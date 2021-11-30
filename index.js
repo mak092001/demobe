@@ -9,11 +9,11 @@ app.use(express.static("public"));
 app.use(bp.urlencoded({ extended: true }));
 app.use(bp.json());
 app.use(cors());
-// const allowedorigin = ["http://localhost:3000"];
-// const options = (cors.CorsOptions = {
-//   origin: allowedorigin,
-// });
-// app.use(cors(options));
+const allowedorigin = ["http://localhost:3000"];
+const options = (cors.CorsOptions = {
+  origin: allowedorigin,
+});
+app.use(cors(options));
 mango
   .connect(process.env.DATABASE_URL, {
     useNewUrlParser: true,
