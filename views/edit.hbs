@@ -1,0 +1,38 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/edit.css" />
+    <script src="/js/addlist.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main_inner">
+        <h1>Update Employee</h1>
+        <form action="/edit" method="post">
+          <input type="hidden" name="saveashidden" value="{{data._id}}" />
+          <label>Full Name</label>
+          <input type="text" name="saveasname" value="{{data.name}}" />
+          <label>Email</label>
+          <input type="text" name="saveasemail" value="{{data.email}}" />
+          <div class="main_inner-inner">
+            <div class="inner2">
+              <label>Mobile</label>
+              <input type="tel" name="saveasmobile" value="{{data.mobile}}" />
+            </div>
+            <div class="inner2">
+              <label>City</label>
+              <input type="text" name="saveascity" value="{{data.city}}" />
+            </div>
+          </div>
+          <div>
+            <input type="submit" value="Submit" />
+          </div>
+        </form>
+        <button id="btn1"><a href="/">View All</a></button>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,45 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  background-color: white;
+  color: black;
+}
+.main {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  background-color: rgb(85, 90, 85);
+}
+.main_inner {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 50px;
+  padding: 20px;
+}
+.main_inner-inner {
+  display: flex;
+  flex-direction: row;
+}
+input {
+  padding: 6px;
+  margin: 10px;
+}
+label {
+  padding: 6px;
+  margin-left: 5px;
+}
+form {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+button {
+  padding: 10px;
+  margin: 10px;
+}
+.inner2 {
+  display: flex;
+  flex-direction: column;
+}

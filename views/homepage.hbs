@@ -1,0 +1,45 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/da69755008.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="/css/homepage.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="main">
+    <div class="main-inner">
+      <div class="heading_div">
+      <button><a href="http://localhost:5035/create"><i class="fas fa-plus"></i> Create</a></button>
+      <h1>Employee List</h1>
+      {{!-- <h1>{{data}}</h1> --}}
+      </div>
+      <table id="table1">
+        <thead>
+        <tr>
+          <th>Full Name</th>
+          <th>Email</th>
+          <th>Mobile</th>
+          <th>City</th>
+        </tr>
+        </thead>
+        <tbody>
+          {{#each data}}
+        <tr>
+          <td>{{this.name}}</td>
+          <td>{{this.email}}</td>
+          <td>{{this.mobile}}</td>
+          <td>{{this.city}}</td>
+          <td><button><a href="/edit/{{this._id}}"><i class="fas fa-edit"></i></a></button></td>
+          <td><button><a href="/delete/{{this._id}}"><i class="far fa-trash-alt"></i></a></button></td>
+        </tr>
+        {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
