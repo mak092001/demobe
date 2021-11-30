@@ -3,9 +3,9 @@ let app = express();
 let mango = require("mongoose");
 let bp = require("body-parser");
 require("dotenv").config();
-let getschema = require("./public/js/schema.js");
+let getschema = require("./schema.js");
 app.use(express.static("public"));
-app.use(bp.urlencoded({ extended: false }));
+app.use(bp.urlencoded({ extended: true }));
 app.use(bp.json());
 mango
   .connect(process.env.murl, {
@@ -18,8 +18,6 @@ mango
   .catch((err) => {
     console.log("error Found while connecting to Database - " + err);
   });
-// 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
-// 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
 app.get("/", (req, res) => {
   getschema
     .find()
@@ -43,8 +41,23 @@ app.post("/", (req, res) => {
     .then(() => {
       console.log("Data send");
     })
-    .catch(() => {
-      console.log("error found at sending data");
+    .catch((err) => {
+      console.log("error found at sending data" + err);
+    });
+});
+app.get("/:id", (req, res) => {
+  getschema
+    .findById(req.params.id)
+    .then((op) => {
+      if (op) {
+        res.send(op);
+      } else {
+        res.status(400).send("not found");
+      }
+    })
+    .catch((err) => {
+      res.send(err);
+      console.log("couldnt get one" + err);
     });
 });
 app.get("/create", (req, res) => {
@@ -62,7 +75,7 @@ app.get("/edit/:id", (req, res) => {
     }
   });
 });
-app.post("/edit", (req, res) => {
+app.put("/edit", (req, res) => {
   getschema.findByIdAndUpdate(
     req.body.saveashidden,
     {
@@ -80,7 +93,7 @@ app.post("/edit", (req, res) => {
     }
   );
 });
-app.get("/delete/:id", (req, res) => {
+app.delete("/delete/:id", (req, res) => {
   getschema
     .findByIdAndRemove(req.params.id)
     .then((user) => {
@@ -94,3 +107,12 @@ let port = 5035;
 app.listen(port, () => {
   console.log("listening at-" + port);
 });
+
+// {
+//   "saveasname":"hgghfgd",
+//   "saveasemail":"@gmail.com",
+//   "saveasmobile":1233214554,
+//   "saveascity":"indore"
+// }
+// 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
+// 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
