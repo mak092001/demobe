@@ -8,7 +8,7 @@ let getschema = require("./schema.js");
 app.use(express.static("public"));
 app.use(bp.urlencoded({ extended: true }));
 app.use(bp.json());
-app.use(cors);
+app.use(cors());
 const allowedorigin = ["http://localhost:3000"];
 const options = (cors.CorsOptions = {
   origin: allowedorigin,
