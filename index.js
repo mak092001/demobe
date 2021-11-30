@@ -5,8 +5,6 @@ let bp = require("body-parser");
 require("dotenv").config();
 let getschema = require("./public/js/schema.js");
 app.use(express.static("public"));
-app.set("views", "./views");
-app.set("view engine", "hbs");
 app.use(bp.urlencoded({ extended: false }));
 app.use(bp.json());
 mango
@@ -20,11 +18,13 @@ mango
   .catch((err) => {
     console.log("error Found while connecting to Database - " + err);
   });
+// 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
+// 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
 app.get("/", (req, res) => {
   getschema
     .find()
     .then((op) => {
-      res.render("homepage", { data: op });
+      res.json(op);
       console.log("Data found at Homepage and  rendered");
     })
     .catch((err) => {
@@ -42,11 +42,9 @@ app.post("/", (req, res) => {
     .save()
     .then(() => {
       console.log("Data send");
-      res.redirect("/");
     })
     .catch(() => {
       console.log("error found at sending data");
-      res.redirect("/create");
     });
 });
 app.get("/create", (req, res) => {
@@ -56,7 +54,8 @@ app.get("/create", (req, res) => {
 app.get("/edit/:id", (req, res) => {
   getschema.findById(req.params.id).then((op) => {
     if (op) {
-      res.render("edit", { data: op });
+      // res.render("edit", { data: op });
+      res.json(op);
       console.log("sended for edit");
     } else {
       console.log("couldnt send for edit");
@@ -77,7 +76,6 @@ app.post("/edit", (req, res) => {
         console.log("error at Updating data - " + err);
       } else {
         console.log("Data updated and rendered");
-        res.redirect("/");
       }
     }
   );
@@ -86,12 +84,10 @@ app.get("/delete/:id", (req, res) => {
   getschema
     .findByIdAndRemove(req.params.id)
     .then((user) => {
-      res.redirect("/");
       console.log("Data deleted");
     })
     .catch((err) => {
       console.log("couldnt delete - " + err);
-      res.redirect("/");
     });
 });
 let port = 5035;
