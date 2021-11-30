@@ -8,7 +8,7 @@ app.use(express.static("public"));
 app.use(bp.urlencoded({ extended: true }));
 app.use(bp.json());
 mango
-  .connect(process.env.murl, {
+  .connect(process.env.DATABASE_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
@@ -103,7 +103,7 @@ app.delete("/delete/:id", (req, res) => {
       console.log("couldnt delete - " + err);
     });
 });
-let port = process.env.port;
+let port = 5034;
 app.listen(port, () => {
   console.log("listening at-" + port);
 });
