@@ -2,13 +2,18 @@ let express = require("express");
 let app = express();
 require("dotenv").config();
 let mango = require("mongoose");
-let bp = require("body-parser");
 let cors = require("cors");
+let bp = require("body-parser");
 let getschema = require("./schema.js");
 app.use(express.static("public"));
 app.use(bp.urlencoded({ extended: true }));
 app.use(bp.json());
-app.use(cors());
+app.use(cors);
+const allowedorigin = ["http://localhost:3000"];
+const options = (cors.CorsOptions = {
+  origin: allowedorigin,
+});
+app.use(cors(options));
 mango
   .connect(process.env.DATABASE_URL, {
     useNewUrlParser: true,
