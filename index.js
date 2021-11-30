@@ -1,8 +1,8 @@
 let express = require("express");
 let app = express();
+require("dotenv").config();
 let mango = require("mongoose");
 let bp = require("body-parser");
-require("dotenv").config();
 let getschema = require("./schema.js");
 app.use(express.static("public"));
 app.use(bp.urlencoded({ extended: true }));
