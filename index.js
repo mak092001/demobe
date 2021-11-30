@@ -103,7 +103,7 @@ app.delete("/delete/:id", (req, res) => {
       console.log("couldnt delete - " + err);
     });
 });
-let port = 5034;
+let port = process.env.PORT;
 app.listen(port, () => {
   console.log("listening at-" + port);
 });
