@@ -107,12 +107,3 @@ let port = 5034;
 app.listen(port, () => {
   console.log("listening at-" + port);
 });
-
-// {
-//   "saveasname":"hgghfgd",
-//   "saveasemail":"@gmail.com",
-//   "saveasmobile":1233214554,
-//   "saveascity":"indore"
-// }
-// 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
-// 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
